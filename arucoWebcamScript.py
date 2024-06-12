@@ -1,12 +1,12 @@
 import cv2
 import numpy as np
 
-def detect_aruco_markers(video_path, output_file_path):
-    # Load the video
-    cap = cv2.VideoCapture(video_path)
+def detect_aruco_markers_from_webcam(output_file_path):
+    # Open a connection to the webcam (0 is the default camera)
+    cap = cv2.VideoCapture(0)
     
     if not cap.isOpened():
-        print("Error: Could not open video.")
+        print("Error: Could not open webcam.")
         return
     
     # Define the ArUco dictionary and the detector parameters
@@ -24,7 +24,7 @@ def detect_aruco_markers(video_path, output_file_path):
 
     with open(output_file_path, 'w') as file:
         while True:
-            # Read a frame from the video
+            # Read a frame from the webcam
             ret, frame = cap.read()
             if not ret:
                 break
@@ -64,9 +64,8 @@ def detect_aruco_markers(video_path, output_file_path):
     cv2.destroyAllWindows()
 
 if __name__ == '__main__':
-    # Path to your video file
-    video_path = 'video/test_video2.mp4'
+    # Path to your output file
     output_file_path = 'output/detected_markers.txt'
     
     # Call the function
-    detect_aruco_markers(video_path, output_file_path)
+    detect_aruco_markers_from_webcam(output_file_path)

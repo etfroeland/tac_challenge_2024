@@ -1,0 +1,2 @@
+Frame 1: Detected ID: 70
+Frame 16: Detected ID: 0
